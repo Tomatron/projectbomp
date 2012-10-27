@@ -21,6 +21,8 @@ package
 		public var _Speed: Number = 25;
 		public var _Alpha: Number = 1.0;
 		
+		public function get Center():Vector2 { return new Vector2(x,y); }
+		
 		public function Ball(x:Number = 0, y:Number = 0, graphic:Graphic = null, mask:Mask = null)
 		{
 			super(x, y, graphic, mask);
@@ -47,6 +49,14 @@ package
 			
 			Draw.circlePlus(x, y, _Radius, _Color, _Alpha);
 			Draw.line(this.x, this.y, this.x + (_Direction.x * _Radius), this.y + (_Direction.y * _Radius), 0xFFFF0000);
+		}
+		
+		public function Contains(point: Vector2):Boolean
+		{
+			var pos:Vector2 = new Vector2(x, y);
+			var delta = Vector2.Subtract(pos, point);
+			
+			return (delta.Length() <= _Radius);
 		}
 		
 		override public function update():void

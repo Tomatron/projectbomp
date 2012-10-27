@@ -21,7 +21,7 @@ package
 		{
 			trace("initialized Engine");
 			
-			FP.world = new GameWorld();
+			FP.world = new LineGame();
 			
 			super.init();
 		}
