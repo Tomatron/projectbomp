@@ -26,13 +26,16 @@ package
 		private var _ScoreText:Entity;
 		private var _Line:LineEntity;
 		private var _Selection:Ball;
-		private var _Discs:Array;
+		
+		private var _Connected:Vector.<Ball>;
+		private var _Discs:Vector.<Ball>;
 		
 		public function LineGame() 
 		{
 			super();
 			
-			_Discs = new Array();
+			_Discs = new Vector.<Ball>();
+			_Connected = new Vector.<Ball>();
 			_Selection = null;			
 			_Line = null;
 		}
@@ -79,7 +82,7 @@ package
 			for (var i:int = 0; i < _Discs.length; ++i)
 			{
 				var disc:Ball = _Discs[i];
-				if (disc.Contains(cursor) && _Selection == null)
+				if (disc.Contains(cursor))
 				{
 					disc._Color = 0xFFFF0000;
 					_Selection = disc;
@@ -89,10 +92,12 @@ package
 					disc._Color = 0xFFFFFFFF;
 				}
 			}
-			
-			
+						
 			if (_Selection != null)
 			{
+				var index:int = _Discs.indexOf(_Selection);
+				_Discs.splice(index, 1);
+							
 				_Line.P0 = _Selection.Center;
 				_Line.P1 = cursor;
 				_Line.Alpha = 0.5;

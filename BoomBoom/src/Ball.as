@@ -54,7 +54,7 @@ package
 		public function Contains(point: Vector2):Boolean
 		{
 			var pos:Vector2 = new Vector2(x, y);
-			var delta = Vector2.Subtract(pos, point);
+			var delta:Vector2 = Vector2.Subtract(pos, point);
 			
 			return (delta.Length() <= _Radius);
 		}

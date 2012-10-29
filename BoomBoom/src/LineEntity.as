@@ -16,8 +16,8 @@ package
 	 */
 	public class LineEntity extends Entity
 	{
-		var _P0:Vector2;
-		var _P1:Vector2;
+		protected var _P0:Vector2;
+		protected var _P1:Vector2;
 		public var Thickness:Number;
 		public var Alpha:Number;
 		public var Color:uint;
